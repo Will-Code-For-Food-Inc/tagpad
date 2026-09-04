@@ -1,0 +1,416 @@
+{
+ "version": "v736ebb234fc2",
+ "cards": [
+  {
+   "id": "g26",
+   "question": "Reference says these are one capability.",
+   "items": [
+    "remove the compiler from the runtime chain",
+    "remove compiler dependencies from runtime"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "one capability"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "not the same",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "g30",
+   "question": "Reference says these are one capability.",
+   "items": [
+    "bridge static types to dynamic host calls",
+    "convert dynamic host values to static types"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "one capability"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "not the same",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "g37",
+   "question": "Reference says these are one capability.",
+   "items": [
+    "update diagnostics on buffer save",
+    "refresh diagnostics on file open"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "one capability"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "not the same",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ],
+   "flag": "flagged doubtful"
+  },
+  {
+   "id": "g38",
+   "question": "Reference says these are one capability.",
+   "items": [
+    "produce a standalone release executable",
+    "generate a portable distribution archive",
+    "generate a distributable package from source code"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "one capability"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "not the same",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "g42",
+   "question": "Reference says these are one capability.",
+   "items": [
+    "emit a manifest of included files",
+    "generate a runtime manifest for the game"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "one capability"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "not the same",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "g44",
+   "question": "Reference says these are one capability.",
+   "items": [
+    "map diagnostics to source locations",
+    "map a runtime failure back to the source line that caused it"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "one capability"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "not the same",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ],
+   "flag": "flagged doubtful"
+  },
+  {
+   "id": "g54",
+   "question": "Reference says these are one capability.",
+   "items": [
+    "emit a binary for the target platform",
+    "handle cross-platform binary generation"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "one capability"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "not the same",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "node1",
+   "question": "Reference splits these into 2.",
+   "items": [
+    "[g0] provide a way to declare side effects in the type",
+    "[g9] check side effect tracking against the type system"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "should be merged"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "reference is right",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "node2",
+   "question": "Reference splits these into 6.",
+   "items": [
+    "[g2] declare the type of a host function the compiler cannot see",
+    "[g14] provide type defaults for untyped lua functions",
+    "[g20] handle incomplete type definitions",
+    "[g30] bridge static types to dynamic host calls",
+    "[g59] infer foreign function signature",
+    "[g60] prevent access to untyped host values"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "should be merged"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "reference is right",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "node3",
+   "question": "Reference splits these into 2.",
+   "items": [
+    "[g3] detect buffer modification events",
+    "[g40] read editor buffer state"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "should be merged"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "reference is right",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "node4",
+   "question": "Reference splits these into 3.",
+   "items": [
+    "[g6] report type mismatches explicitly",
+    "[g24] explain error causes in detail",
+    "[g46] suggest fixes for common errors"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "should be merged"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "reference is right",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "node5",
+   "question": "Reference splits these into 2.",
+   "items": [
+    "[g7] strip build artifacts from the output",
+    "[g26] remove compiler dependencies from runtime"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "should be merged"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "reference is right",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "node6",
+   "question": "Reference splits these into 3.",
+   "items": [
+    "[g10] break execution on runtime failure",
+    "[g39] show context around failure location",
+    "[g44] map diagnostics to source locations",
+    "[g44] map a runtime failure back to the source line that caused it"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "should be merged"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "reference is right",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "node7",
+   "question": "Reference splits these into 3.",
+   "items": [
+    "[g15] run initialization code before tests",
+    "[g35] restore state after each test",
+    "[g61] reset state before each test"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "should be merged"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "reference is right",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "node8",
+   "question": "Reference splits these into 2.",
+   "items": [
+    "[g28] expose global variable values at crash",
+    "[g47] reveal erased type at failure site"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "should be merged"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "reference is right",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  },
+  {
+   "id": "node9",
+   "question": "Reference splits these into 2.",
+   "items": [
+    "[g51] reject untracked effects from lua function results",
+    "[g57] validate lua function effect sets against host effects"
+   ],
+   "options": [
+    {
+     "id": "same",
+     "label": "Same",
+     "hint": "should be merged"
+    },
+    {
+     "id": "split",
+     "label": "Split",
+     "hint": "reference is right",
+     "opens": "partition"
+    },
+    {
+     "id": "unsure",
+     "label": "Unsure"
+    }
+   ]
+  }
+ ]
+}

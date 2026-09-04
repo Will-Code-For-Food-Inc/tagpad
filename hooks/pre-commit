@@ -1,0 +1,20 @@
+#!/bin/sh
+# Everything that can be checked without a browser or a controller, checked
+# before the commit lands. Ordered cheapest-first so an obvious failure does not
+# wait on the slow one.
+#
+# Enabled by `git config core.hooksPath hooks`, which is in the repo rather than
+# in .git/, so a fresh clone gets the same bar with one command.
+set -e
+
+echo "fmt..."
+cargo fmt --check
+
+echo "clippy..."
+cargo clippy --workspace --all-targets -- -D warnings
+
+echo "test..."
+cargo test --workspace --quiet
+
+echo "wasm..."
+cargo build -p tagpad-wasm --target wasm32-unknown-unknown --release --quiet

@@ -1,0 +1,121 @@
+<title>Tagpad Web</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+ --paper:#f7f6f3;--card:#fff;--ink:#14161c;--muted:#666c7a;--line:#dcd8d1;
+ --accent:#3a3785;--keep:#276b62;--split:#a84a26;--unsure:#8a6a17;
+ --keep-bg:#dcece9;--split-bg:#f7e6dc;--unsure-bg:#f5eed6;
+ --sans:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+ --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --paper:#101116;--card:#1a1c23;--ink:#eceae5;--muted:#9ba0ae;--line:#2f323c;
+ --accent:#a5a1f5;--keep:#69c4b8;--split:#eb9668;--unsure:#dcc264;
+ --keep-bg:#16302c;--split-bg:#33231a;--unsure-bg:#2f2915;}}
+:root[data-theme="dark"]{
+ --paper:#101116;--card:#1a1c23;--ink:#eceae5;--muted:#9ba0ae;--line:#2f323c;
+ --accent:#a5a1f5;--keep:#69c4b8;--split:#eb9668;--unsure:#dcc264;
+ --keep-bg:#16302c;--split-bg:#33231a;--unsure-bg:#2f2915;}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:19px;
+ margin:0;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.top{display:flex;align-items:center;gap:16px;padding:14px 26px;border-bottom:2px solid var(--line);flex:none}
+.pos{font-family:var(--mono);font-size:17px;font-weight:500;font-variant-numeric:tabular-nums}
+.bar{flex:1;height:7px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.padstate{font-size:15px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.dot.on{background:var(--keep)}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;
+ padding:20px 26px;gap:16px;min-height:0}
+.q{font-size:17px;color:var(--muted);display:flex;gap:12px;align-items:baseline}
+.gid{font-family:var(--mono);font-weight:600;color:var(--accent);font-size:16px}
+.flag{color:var(--unsure);font-size:15px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:12px;
+ padding:22px 26px;overflow-y:auto;min-height:0;flex:1;transition:background .18s,border-color .18s}
+.card.flash-keep{background:var(--keep-bg);border-color:var(--keep)}
+.card.flash-split{background:var(--split-bg);border-color:var(--split)}
+.card.flash-unsure{background:var(--unsure-bg);border-color:var(--unsure)}
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px}
+li{font-family:var(--mono);font-size:21px;line-height:1.4;padding-left:20px;position:relative}
+li::before{content:"";position:absolute;left:0;top:.65em;width:11px;height:2px;background:var(--muted)}
+li.asg{padding-left:0;display:flex;align-items:center;gap:12px;border-radius:8px;
+ padding:5px 9px;border:2px solid transparent;transition:.13s}
+li.asg::before{display:none}
+li.asg.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,transparent)}
+.badge{width:30px;height:30px;flex:none;border-radius:7px;display:grid;place-items:center;
+ font-size:15px;font-weight:700;color:#fff}
+li.ga .badge{background:var(--keep)} li.gb .badge{background:var(--split)}
+li.gc .badge{background:var(--accent)} li.gd .badge{background:var(--unsure)}
+.g-start,.g-sel{background:var(--muted)}
+.opts{display:flex;gap:12px;flex:none}
+.opt{flex:1;display:flex;align-items:center;gap:13px;background:var(--card);
+ border:2px solid var(--line);border-radius:10px;padding:13px 16px;font-size:18px;font-weight:600}
+.opt small{display:block;font-size:14px;font-weight:400;color:var(--muted);margin-top:2px}
+.glyph{width:38px;height:38px;flex:none;border-radius:50%;display:grid;place-items:center;
+ font-weight:700;font-size:17px;color:#fff;font-family:var(--mono)}
+.g-south{background:var(--keep)} .g-east{background:var(--split)} .g-north{background:var(--unsure)}
+.grp{display:flex;gap:8px;flex:1.4}
+.gbtn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:1px;border-radius:10px;padding:9px 0;cursor:pointer;color:#fff;
+ border:2px solid transparent;transition:.13s}
+.gbtn b{font-size:19px;font-weight:700;line-height:1}
+.gbtn i{font-family:var(--mono);font-size:11px;font-style:normal;opacity:.75}
+.gbtn:hover{filter:brightness(1.12)}
+.gbtn:active{transform:scale(.96)}
+.gbtn.ga{background:var(--keep)} .gbtn.gb{background:var(--split)}
+.gbtn.gc{background:var(--accent)} .gbtn.gd{background:var(--unsure)}
+.opt.act{cursor:pointer}
+.opt.act:hover{border-color:var(--muted)}
+.opt.act:active{transform:scale(.985)}
+li.asg{cursor:pointer}
+li.asg:hover{border-color:var(--muted)}
+.opt.on{border-width:3px}
+.opt.on.o-same{border-color:var(--keep)} .opt.on.o-split{border-color:var(--split)}
+.opt.on.o-unsure{border-color:var(--unsure)}
+.bot{flex:none;display:flex;align-items:center;gap:18px;padding:12px 26px;
+ border-top:2px solid var(--line);font-size:15px;color:var(--muted)}
+.bind{display:flex;align-items:center;gap:7px}
+.bind b{font-family:var(--mono);border:1.5px solid var(--muted);border-radius:5px;
+ padding:1px 7px;font-weight:500;font-size:13px}
+button{font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;
+ border:2px solid var(--accent);background:transparent;color:var(--accent);
+ padding:7px 16px;border-radius:8px}
+dialog{border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);
+ padding:20px;max-width:min(760px,92vw);width:100%}
+dialog::backdrop{background:#0008}
+textarea{width:100%;height:44vh;font-family:var(--mono);font-size:13px;line-height:1.5;
+ background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:11px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<div class="top">
+ <span class="pos" id="pos">1 / 16</span>
+ <span class="bar"><i id="fill"></i></span>
+ <span class="padstate"><span class="dot" id="dot"></span><span id="padtxt">press any button</span></span>
+ <span id="engine" style="font-family:var(--mono);font-size:12px;color:var(--muted)">loading…</span>
+</div>
+<main>
+ <div class="q"><span class="gid" id="gid"></span><span id="qtext"></span><span class="flag" id="flag"></span></div>
+ <div class="card" id="card"><ul id="items"></ul></div>
+ <div class="opts" id="opts"></div>
+</main>
+<div class="bot">
+ <span class="bind"><b>L1</b>/<b>R1</b> move</span>
+ <span class="bind"><b>Start</b> output</span>
+ <span class="bind"><b>K</b>/<b>S</b>/<b>U</b> keyboard</span>
+ <span id="saved" style="margin-left:auto"></span>
+ <button id="show">Output</button>
+</div>
+<dialog id="diag">
+ <div style="font-family:var(--mono);font-size:14px;line-height:1.7" id="diagbody"></div>
+ <div style="margin-top:14px"><button id="diagclose">Close</button></div>
+</dialog>
+<dialog id="dlg">
+ <textarea id="blob" readonly spellcheck="false"></textarea>
+ <div style="display:flex;gap:10px;margin-top:12px">
+  <button id="copy">Copy JSON</button><button id="close">Close</button>
+ </div>
+</dialog>
+<script>
+/*SCRIPT*/
+</script>

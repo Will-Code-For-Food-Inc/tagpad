@@ -1,0 +1,7 @@
+#!/bin/sh
+# The web build is a generated artifact, not committed -- but it must at least
+# still build before anything reaches a remote.
+set -e
+cargo build -p tagpad-wasm --target wasm32-unknown-unknown --release --quiet
+python3 web/build.py tasks/example.json >/dev/null
+echo "web build ok"

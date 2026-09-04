@@ -1,0 +1,44 @@
+[workspace]
+resolver = "3"
+members = ["crates/core", "crates/imgui-app", "crates/wasm"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license-file = "LICENSE.md"
+
+[workspace.dependencies]
+tagpad-core = { path = "crates/core" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+criterion = "0.7"
+
+# Lints live at the workspace root so every crate inherits the same bar, and a
+# new crate cannot quietly opt out of it.
+[workspace.lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+missing_debug_implementations = "warn"
+unreachable_pub = "warn"
+rust_2018_idioms = { level = "warn", priority = -1 }
+
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+# Correctness lints worth failing the build over rather than reading past.
+unwrap_used = "deny"
+expect_used = "warn"
+panic = "warn"
+indexing_slicing = "warn"          # a panicking index is a crash in a labelling session
+float_cmp = "deny"
+todo = "deny"
+dbg_macro = "deny"
+print_stdout = "allow"             # the build script and native app legitimately print
+module_name_repetitions = "allow"  # tagpad_core::Task reads fine
+
+[profile.release]
+opt-level = "s"
+lto = true
+panic = "abort"
+strip = true
